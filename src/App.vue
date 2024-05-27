@@ -1,10 +1,26 @@
 <template>
-  <div>test</div>
-  <v-btn color="success">text</v-btn>
+  <div class="container">
+    <header>
+      <AppTabs />
+    </header>
+  </div>
 </template>
-
-<script>
-export default {}
+<script setup>
+import AppTabs from './components/AppTabs.vue'
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  & header {
+    background-color: #90adc6;
+    width: 100vw;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+}
+</style>
