@@ -1,31 +1,17 @@
 <template>
   <ul class="app-tabs">
-    <li class="tab tab--active" v-for="item in tabs" :key="item.title">
-      <button type="button" class="tab__title">
+    <li class="tab tab--active" v-for="item in props.tabsData" :key="item.title">
+      <button type="button" class="tab__title" @click="currentTab = item.component">
         {{ item.title }}
+        {{ currentTab }}
       </button>
     </li>
   </ul>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-const tabs = computed(() => {
-  return [
-    {
-      title: 'All Countries',
-      component: null
-    },
-    {
-      title: 'Visited Countries',
-      component: null
-    },
-    {
-      title: 'Wishlist',
-      component: null
-    }
-  ]
-})
+const props = defineProps(['tabsData'])
+const currentTab = defineModel()
 </script>
 
 <style lang="scss" scoped>
