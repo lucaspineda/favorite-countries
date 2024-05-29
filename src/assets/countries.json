@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Brazil",
+    "capital": "Brasilia",
+    "summary": "Largest South American country, known for its Amazon rainforest, Carnaval celebrations, and iconic Christ the Redeemer statue in Rio de Janeiro."
+  },
+  {
+    "name": "Japan",
+    "capital": "Tokyo",
+    "summary": "Island nation in East Asia, known for its rich history, technological advancements, and beautiful cherry blossom festivals."
+  },
+  {
+    "name": "Italy",
+    "capital": "Rome",
+    "summary": "European nation known for its historical landmarks like the Colosseum and Leaning Tower of Pisa, delicious cuisine, and artistic heritage."
+  },
+  {
+    "name": "Canada",
+    "capital": "Ottawa",
+    "summary": "Large North American country, known for its vast wilderness, friendly people, and multicultural cities like Toronto and Vancouver."
+  },
+  {
+    "name": "Australia",
+    "capital": "Canberra",
+    "summary": "Oceania country known for its unique wildlife like kangaroos and koalas, stunning beaches, and vibrant cities like Sydney and Melbourne."
+  },
+  {
+    "name": "Kenya",
+    "capital": "Nairobi",
+    "summary": "East African country known for its wildlife safaris, beautiful landscapes like the Great Rift Valley, and rich cultural heritage."
+  },
+  {
+    "name": "France",
+    "capital": "Paris",
+    "summary": "Western European country known for its romantic atmosphere, iconic landmarks like the Eiffel Tower, and delicious food and wine."
+  },
+  {
+    "name": "India",
+    "capital": "New Delhi",
+    "summary": "South Asian country known for its diverse cultures, historical sites like the Taj Mahal, and vibrant festivals like Holi."
+  },
+  {
+    "name": "Mexico",
+    "capital": "Mexico City",
+    "summary": "North American country known for its ancient civilizations like the Maya and Aztecs, beautiful beaches, and delicious food like tacos and burritos."
+  },
+  {
+    "name": "Spain",
+    "capital": "Madrid",
+    "summary": "Iberian Peninsula country known for its flamenco dance, historical cities like Barcelona and Madrid, and stunning beaches."
+  },
+  {
+    "name": "South Africa",
+    "capital": "Pretoria (administrative), Cape Town (legislative)",
+    "summary": "Southern African country known for its diverse landscapes, wildlife safaris, and iconic landmarks like Table Mountain in Cape Town."
+  },
+  {
+    "name": "Thailand",
+    "capital": "Bangkok",
+    "summary": "Southeast Asian country known for its beautiful beaches, delicious cuisine, and ornate Buddhist temples."
+  },
+  {
+    "name": "Egypt",
+    "capital": "Cairo",
+    "summary": "North African country known for its ancient pyramids, the Great Sphinx, and the Nile River."
+  },
+  {
+    "name": "New Zealand",
+    "capital": "Wellington",
+    "summary": "Island country in Oceania known for its stunning natural beauty, adventure activities, and friendly people."
+  },
+  {
+    "name": "Argentina",
+    "capital": "Buenos Aires",
+    "summary": "South American country known for its tango dance, beautiful landscapes like the Andes mountains and Patagonia, and delicious steaks."
+  }
+]

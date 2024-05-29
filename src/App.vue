@@ -30,14 +30,7 @@ const tabs = computed(() => {
   ]
 })
 
-// const currentTab = computed(() => {
-//   console.log('Current Tab:', tabs.value[0].component) // Log the component name
-//   return tabs.value[0].component
-// })
-
 const currentTab = ref(tabs.value[0].component)
-
-console.log(currentTab, 'heyy')
 </script>
 
 <style lang="scss" scoped>
