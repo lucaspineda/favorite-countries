@@ -3,7 +3,6 @@
     <li class="tab tab--active" v-for="item in props.tabsData" :key="item.title">
       <button type="button" class="tab__title" @click="currentTab = item.component">
         {{ item.title }}
-        {{ currentTab }}
       </button>
     </li>
   </ul>

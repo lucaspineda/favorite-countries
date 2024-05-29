@@ -12,10 +12,7 @@ import AppTabs from './components/AppTabs.vue'
 import CountriesList from './components/CountriesList.vue'
 import VisitedCountries from './components/VisitedCountries.vue'
 import Wishlist from './components/Wishlist.vue'
-function selectTab(value) {
-  console.log('chamou', value)
-  currentTab.value = value
-}
+
 const tabs = computed(() => {
   return [
     {
