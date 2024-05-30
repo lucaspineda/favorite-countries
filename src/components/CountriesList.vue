@@ -13,15 +13,33 @@
       ></v-text-field>
     </div>
     <ul>
-      <li class="country-list-item" v-for="item in Countries" :key="item.name">
+      <li
+        class="country-list-item"
+        v-for="item in countriesRef"
+        :key="item.name"
+        @click="handleCountryClick(item)"
+      >
         <section class="country-list-item__title">
-          <span>
-            {{ item.name }}
-          </span>
+          <span> {{ item.name }} </span>
           <div class="icon-wrapper">
-            <v-icon icon="mdi-arrow-down" color="grey-darken-1" end></v-icon>
+            <v-icon
+              v-show="!item.showDetails"
+              icon="mdi-arrow-down"
+              color="grey-darken-1"
+              end
+            ></v-icon>
+            <v-icon
+              v-show="item.showDetails"
+              icon="mdi-arrow-up"
+              color="grey-darken-1"
+              end
+            ></v-icon>
           </div>
         </section>
+        <article v-show="item.showDetails" class="country-list-item__details">
+          <span> <span style="font-weight: 600">Capital:</span> {{ item.capital }} </span>
+          <span> <span style="font-weight: 600">About:</span> {{ item.summary }}</span>
+        </article>
       </li>
     </ul>
   </main>
@@ -31,10 +49,19 @@
 import { ref } from 'vue'
 import Countries from './../assets/countries.json'
 
+const processedCountries = Countries.map((country) => ({
+  ...country,
+  showDetails: false
+}))
 const countryInput = ref('')
+const countriesRef = ref(processedCountries)
 
 function handleCountryInput() {
   console.log('dsfd')
+}
+
+function handleCountryClick(item) {
+  item.showDetails = !item.showDetails
 }
 </script>
 
@@ -56,6 +83,13 @@ main {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      font-weight: 600;
+    }
+    &__details {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
     }
   }
 }
