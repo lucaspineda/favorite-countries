@@ -15,7 +15,7 @@
     <ul>
       <li
         class="country-list-item"
-        v-for="item in countriesRef"
+        v-for="item in computedCountries"
         :key="item.name"
         @click="handleCountryClick(item)"
       >
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Countries from './../assets/countries.json'
 
 const processedCountries = Countries.map((country) => ({
@@ -56,9 +56,11 @@ const processedCountries = Countries.map((country) => ({
 const countryInput = ref('')
 const countriesRef = ref(processedCountries)
 
-function handleCountryInput() {
-  console.log('dsfd')
-}
+const computedCountries = computed(() => {
+  return countriesRef.value.filter((country) =>
+    country.name.toLowerCase().includes(countryInput.value.toLowerCase())
+  )
+})
 
 function handleCountryClick(item) {
   item.showDetails = !item.showDetails
@@ -77,13 +79,13 @@ main {
     border-radius: 10px; /* Set border radius for rounded corners */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
 
     &__title {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      font-weight: 600;
+      font-weight: 500;
     }
     &__details {
       margin-top: 0.5rem;
