@@ -19,15 +19,18 @@ const tabs = computed(() => {
   return [
     {
       title: 'All Countries',
-      component: CountriesHome
+      component: CountriesHome,
+      path: 'all'
     },
     {
       title: 'Visited Countries',
-      component: VisitedCountries
+      component: VisitedCountries,
+      path: 'visited'
     },
     {
       title: 'Wishlist',
-      component: Wishlist
+      component: Wishlist,
+      path: 'wishlist'
     }
   ]
 })
