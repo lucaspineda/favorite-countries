@@ -3,21 +3,23 @@
     <header>
       <AppTabs :tabsData="tabs" v-model="currentTab" />
     </header>
-    <component :is="currentTab" />
+    <main>
+      <component :is="currentTab" />
+    </main>
   </div>
 </template>
 <script setup>
 import { computed, ref } from 'vue'
 import AppTabs from './components/AppTabs.vue'
-import CountriesList from './components/CountriesList.vue'
+import CountriesHome from './components/CountriesHome.vue'
 import VisitedCountries from './components/VisitedCountries.vue'
-import Wishlist from './components/Wishlist.vue'
+import Wishlist from './components/WishList.vue'
 
 const tabs = computed(() => {
   return [
     {
       title: 'All Countries',
-      component: CountriesList
+      component: CountriesHome
     },
     {
       title: 'Visited Countries',
@@ -47,5 +49,11 @@ const currentTab = ref(tabs.value[0].component)
     justify-content: center;
     align-items: end;
   }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 1rem;
 }
 </style>
