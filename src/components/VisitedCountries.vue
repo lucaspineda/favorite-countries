@@ -5,10 +5,14 @@
 <script setup>
 import { useStore } from 'vuex'
 import CountriesList from './CountriesList.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const store = useStore()
 
-const visitedCountriesList = ref(store.getters['countries/visitedCountries'])
+const visitedCountriesList = computed(() => {
+  console.log('chamou computed')
+  return store.getters['countries/visitedCountries']
+})
+console.log(visitedCountriesList, 'visitedCountriesList')
 </script>
 
 <style lang="scss"></style>

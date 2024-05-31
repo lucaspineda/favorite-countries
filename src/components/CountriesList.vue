@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul v-if="props.countriesList">
     <li class="country-list-item" v-for="item in props.countriesList" :key="item.name">
       <section @click="handleCountryClick(item)" class="country-list-item__title">
         <span> {{ item.name }} </span>
@@ -17,8 +17,24 @@
         <span> <span style="font-weight: 600">Capital:</span> {{ item.capital }} </span>
         <span> <span style="font-weight: 600">About:</span> {{ item.summary }}</span>
         <section class="country-list-item__details__btns">
-          <button @click="addToVisitedCountry(item)">Add to Visited</button>
-          <button @click="addToWishlist(item)">Add to Wishlist</button>
+          <div v-if="appPath.includes('all')">
+            <button @click="addToVisitedCountry(item)">Add to Visited</button>
+            <button @click="addToWishlist(item)">Add to Wishlist</button>
+          </div>
+          <button
+            v-else-if="appPath.includes('visited')"
+            style="background-color: #c4493f; color: #fff"
+            @click="removeFromVisited(item.name)"
+          >
+            Remove {{ item.name }}
+          </button>
+          <button
+            v-else-if="appPath.includes('wishlist')"
+            style="background-color: #c4493f; color: #fff"
+            @click="removeFromWishlist(item.name)"
+          >
+            Remove
+          </button>
         </section>
       </article>
     </li>
@@ -27,11 +43,20 @@
 
 <script setup>
 import { useStore } from 'vuex'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const appPath = computed(() => route.path)
+console.log(appPath.value, 'appPath')
 
 const props = defineProps(['countriesList'])
+console.log(props.countriesList, 'propss')
 const store = useStore()
 
 function addToVisitedCountry(item) {
+  console.log(item, 'itemvalue')
   store.commit('countries/pushToVisitedList', item)
 }
 
@@ -41,6 +66,15 @@ function addToWishlist(item) {
 
 function handleCountryClick(item) {
   item.showDetails = !item.showDetails
+}
+
+function removeFromVisited(name) {
+  console.log(name, 'namem')
+  store.commit('countries/removeFromVisited', name)
+}
+
+function removeFromWishlist(name) {
+  store.commit('countries/removeFromWishlist', name)
 }
 </script>
 

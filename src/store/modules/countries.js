@@ -16,12 +16,25 @@ const getters = {
 // mutations
 const mutations = {
   pushToVisitedList(state, item) {
+    console.log(item, 'itemm')
     if (!state.visitedCountries.find((country) => country.name === item.name)) {
       state.visitedCountries.push(item)
     }
   },
   pushToWishlist(state, item) {
     state.wishlist.push(item)
+  },
+  removeFromVisited(state, countryName) {
+    const index = state.visitedCountries.findIndex((country) => country.name === countryName)
+    if (index !== -1) {
+      state.visitedCountries.splice(index, 1)
+    }
+  },
+  removeFromWishlist(state, countryName) {
+    const index = state.wishlist.findIndex((country) => country.name === countryName)
+    if (index !== -1) {
+      state.wishlist.splice(index, 1)
+    }
   }
 }
 
