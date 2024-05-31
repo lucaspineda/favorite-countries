@@ -34,8 +34,8 @@
           <span> <span style="font-weight: 600">Capital:</span> {{ item.capital }} </span>
           <span> <span style="font-weight: 600">About:</span> {{ item.summary }}</span>
           <section class="country-list-item__details__btns">
-            <button>Add to Visited</button>
-            <button>Add to Wishlist</button>
+            <button @click="addToVisitedCountry(item)">Add to Visited</button>
+            <button @click="addToWishlist(item)">Add to Wishlist</button>
           </section>
         </article>
       </li>
@@ -45,7 +45,12 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+
 import Countries from './../assets/countries.json'
+
+const store = useStore()
+console.log(store, 'storee')
 
 const processedCountries = Countries.map((country) => ({
   ...country,
@@ -59,6 +64,14 @@ const computedCountries = computed(() => {
     country.name.toLowerCase().includes(countryInput.value.toLowerCase())
   )
 })
+
+function addToVisitedCountry(item) {
+  store.commit('countries/pushToVisitedList', item)
+}
+
+function addToWishlist(item) {
+  store.commit('countries/pushToWishlist', item)
+}
 
 function handleCountryClick(item) {
   item.showDetails = !item.showDetails
