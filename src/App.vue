@@ -9,11 +9,28 @@
   </div>
 </template>
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import AppTabs from './components/AppTabs.vue'
 import CountriesHome from './components/CountriesHome.vue'
 import VisitedCountries from './components/VisitedCountries.vue'
 import Wishlist from './components/WishList.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const currentTab = ref(null)
+watch(route, (newRoute, oldRoute) => {
+  console.log('Path changed:', newRoute.path, oldRoute)
+  if (newRoute.path === '/' || newRoute.path === '/all') {
+    currentTab.value = CountriesHome
+    console.log('caiuu')
+  } else if (newRoute.path === '/visited') {
+    currentTab.value = VisitedCountries
+  } else if (newRoute.path === '/wishlist') {
+    currentTab.value = Wishlist
+  }
+  console.log(currentTab, 'currentTab')
+})
 
 const tabs = computed(() => {
   return [
@@ -34,8 +51,6 @@ const tabs = computed(() => {
     }
   ]
 })
-
-const currentTab = ref(tabs.value[0].component)
 </script>
 
 <style lang="scss" scoped>

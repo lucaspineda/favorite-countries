@@ -17,7 +17,7 @@
         <span> <span style="font-weight: 600">Capital:</span> {{ item.capital }} </span>
         <span> <span style="font-weight: 600">About:</span> {{ item.summary }}</span>
         <section class="country-list-item__details__btns">
-          <div v-if="appPath.includes('all')">
+          <div v-if="appPath == '/all' || appPath == '/'">
             <button @click="addToVisitedCountry(item)">Add to Visited</button>
             <button @click="addToWishlist(item)">Add to Wishlist</button>
           </div>
@@ -26,7 +26,7 @@
             style="background-color: #c4493f; color: #fff"
             @click="removeFromVisited(item.name)"
           >
-            Remove {{ item.name }}
+            Remove
           </button>
           <button
             v-else-if="appPath.includes('wishlist')"
@@ -49,14 +49,11 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const appPath = computed(() => route.path)
-console.log(appPath.value, 'appPath')
 
 const props = defineProps(['countriesList'])
-console.log(props.countriesList, 'propss')
 const store = useStore()
 
 function addToVisitedCountry(item) {
-  console.log(item, 'itemvalue')
   store.commit('countries/pushToVisitedList', item)
 }
 
@@ -69,7 +66,6 @@ function handleCountryClick(item) {
 }
 
 function removeFromVisited(name) {
-  console.log(name, 'namem')
   store.commit('countries/removeFromVisited', name)
 }
 

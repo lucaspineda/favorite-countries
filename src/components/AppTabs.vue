@@ -1,6 +1,10 @@
 <template>
   <ul class="app-tabs">
-    <li class="tab tab--active" v-for="item in props.tabsData" :key="item.title">
+    <li
+      v-for="item in props.tabsData"
+      :class="{ 'tab--active': checkActiveTab(item.path), tab: true }"
+      :key="item.title"
+    >
       <button type="button" class="tab__title" @click="handleTabChange(item)">
         {{ item.title }}
       </button>
@@ -9,15 +13,25 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 
 const props = defineProps(['tabsData'])
 const currentTab = defineModel()
 function handleTabChange(item) {
   currentTab.value = item.component
   router.push({ path: `${item.path}` })
+}
+
+function checkActiveTab(itemPath) {
+  if (route.path === '/' && itemPath === 'all') {
+    return true
+  } else if ('/' + itemPath === route.path) {
+    return true
+  }
 }
 </script>
 

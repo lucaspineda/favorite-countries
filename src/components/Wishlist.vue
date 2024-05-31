@@ -9,6 +9,7 @@ import { ref } from 'vue'
 const store = useStore()
 
 const countriesWishlist = ref(store.getters['countries/wishlist'])
+console.log(countriesWishlist, 'countriesWishlist')
 </script>
 
 <style lang="scss"></style>

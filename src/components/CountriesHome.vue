@@ -20,7 +20,8 @@ import CountriesList from './CountriesList.vue'
 import Countries from '../assets/countries.json'
 
 const store = useStore()
-console.log(store, 'storee')
+
+console.log(Countries, 'Countries')
 
 const processedCountries = Countries.map((country) => ({
   ...country,

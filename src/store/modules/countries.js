@@ -16,13 +16,14 @@ const getters = {
 // mutations
 const mutations = {
   pushToVisitedList(state, item) {
-    console.log(item, 'itemm')
     if (!state.visitedCountries.find((country) => country.name === item.name)) {
       state.visitedCountries.push(item)
     }
   },
   pushToWishlist(state, item) {
-    state.wishlist.push(item)
+    if (!state.wishlist.find((country) => country.name === item.name)) {
+      state.wishlist.push(item)
+    }
   },
   removeFromVisited(state, countryName) {
     const index = state.visitedCountries.findIndex((country) => country.name === countryName)
