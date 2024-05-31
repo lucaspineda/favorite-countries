@@ -1,13 +1,14 @@
 <template>
-  <div><CountriesList :countriesList="computedCountries" /></div>
+  <div><CountriesList :countriesList="countriesWishlist" /></div>
 </template>
 
 <script setup>
 import { useStore } from 'vuex'
 import CountriesList from './CountriesList.vue'
+import { ref } from 'vue'
 const store = useStore()
 
-const visitedCountriesList = ref(store.countries.getters.visitedCountries)
+const countriesWishlist = ref(store.getters['countries/wishlist'])
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>
