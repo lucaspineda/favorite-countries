@@ -9,17 +9,11 @@
         hide-details
         single-line
         v-model="countryInput"
-        @input="handleCountryInput"
       ></v-text-field>
     </div>
     <ul>
-      <li
-        class="country-list-item"
-        v-for="item in computedCountries"
-        :key="item.name"
-        @click="handleCountryClick(item)"
-      >
-        <section class="country-list-item__title">
+      <li class="country-list-item" v-for="item in computedCountries" :key="item.name">
+        <section @click="handleCountryClick(item)" class="country-list-item__title">
           <span> {{ item.name }} </span>
           <div class="icon-wrapper">
             <v-icon
@@ -39,6 +33,10 @@
         <article v-show="item.showDetails" class="country-list-item__details">
           <span> <span style="font-weight: 600">Capital:</span> {{ item.capital }} </span>
           <span> <span style="font-weight: 600">About:</span> {{ item.summary }}</span>
+          <section class="country-list-item__details__btns">
+            <button>Add to Visited</button>
+            <button>Add to Wishlist</button>
+          </section>
         </article>
       </li>
     </ul>
@@ -92,6 +90,33 @@ main {
       font-size: 0.8rem;
       display: flex;
       flex-direction: column;
+
+      &__btns {
+        display: flex;
+        margin-top: 1rem;
+
+        & button {
+          border: 2px solid #ccc; /* Set border style, width, and color */
+          border-radius: 4px; /* Set border radius for rounded corners */
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+          padding: 0.4rem;
+          background-color: #fad02c;
+          color: #000;
+          margin-right: 0.5rem;
+          border-style: none;
+          box-sizing: border-box;
+          cursor: pointer;
+          font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-weight: 500;
+          height: 40px;
+          padding: 10px 16px;
+          transition: color 100ms;
+          vertical-align: baseline;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
+      }
     }
   }
 }
